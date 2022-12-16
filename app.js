@@ -11,21 +11,23 @@ document.addEventListener('DOMContentLoaded', function(){
 
     function validar(e){
         if(e.target.value.trim() == ''){
-            enviarAlerta(`El campo ${e.target.id} es obligatorio`, e.target.parentElement)
-        }else{
-            console.log(e.target.value);
+            enviarAlerta(`El campo ${e.target.id} es obligatorio`, e.target.parentElement);
+            return; //esto es para no tenes tantos else, si se cumple esta velidacion el bloque de codigo termina
         }
+        limpiarAlerta(e.target.parentElement)
     }
 
     function enviarAlerta(mensaje, referencia){
-
-        const alerta = referencia.querySelector('.alerta');
-        if(alerta){
-            alerta.remove();
-        }
+        limpiarAlerta(referencia)
         const error = document.createElement('P');
         error.textContent = mensaje;
         error.classList.add('alerta');
         referencia.appendChild(error)
+    }
+    function limpiarAlerta(referencia){
+        const alerta = referencia.querySelector('.alerta');
+        if(alerta){
+            alerta.remove();
+        }
     }
 })
