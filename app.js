@@ -14,6 +14,10 @@ document.addEventListener('DOMContentLoaded', function(){
             enviarAlerta(`El campo ${e.target.id} es obligatorio`, e.target.parentElement);
             return; //esto es para no tenes tantos else, si se cumple esta velidacion el bloque de codigo termina
         }
+        if(e.target.id == 'email' &&  !validarEmail(e.target.value)){
+            enviarAlerta('El email no es valido', e.target.parentElement)
+            return;
+        }
         limpiarAlerta(e.target.parentElement)
     }
 
@@ -32,5 +36,7 @@ document.addEventListener('DOMContentLoaded', function(){
     }
     function validarEmail(email){
         const regex =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/ //busca un patron en una cadena de texto 
+        const resultado = regex.test(email);
+        return resultado;
     }
 })
