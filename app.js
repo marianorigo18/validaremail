@@ -19,10 +19,14 @@ document.addEventListener('DOMContentLoaded', function(){
     function validar(e){
         if(e.target.value.trim() == ''){
             enviarAlerta(`El campo ${e.target.id} es obligatorio`, e.target.parentElement);
+            email[e.target.name] = '';
+            comprobarEmail();
             return; //esto es para no tenes tantos else, si se cumple esta velidacion el bloque de codigo termina
         }
         if(e.target.id == 'email' &&  !validarEmail(e.target.value)){
             enviarAlerta('El email no es valido', e.target.parentElement)
+            email[e.target.name] = '';
+            comprobarEmail();
             return;
         }
         limpiarAlerta(e.target.parentElement)
@@ -53,10 +57,10 @@ document.addEventListener('DOMContentLoaded', function(){
     }
     function comprobarEmail(){
         if(Object.values(email).includes('')){;//si almenos uno de estos valores tiene un string vacio = true, con esta validacion podemos saber si todos lo campos estan completos para despues validar el botn de envio.
-            console.log('aun hay campos vacios')
-        }else{
-            console.log('todos los campo estan comppletados')
-            btnSubmit.disabled = false;
+            btnSubmit.disabled = true;
+            return
         }
+        btnSubmit.disabled = false;
+
     }
 })
