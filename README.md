@@ -1,6 +1,6 @@
 phase de creacion:
-windows = global objet
-this = windows
+windows = global objet,
+this = windows,
 se guardan las varibles 
 y funciones en la memoria de la computadora
 y el motor de javascript les otorga un valor undefined.
