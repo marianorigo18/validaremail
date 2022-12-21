@@ -19,3 +19,5 @@ Una vez activado el button reset el botos de submit se desactivara y todos los c
 Envio de Email:
 
 Una vez enviado el email simulara un spinner, y luego un mensaje de que se envio con exito el email.
+
+explication
